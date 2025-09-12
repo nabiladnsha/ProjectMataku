@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            margin: 50px 0 30px 0;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px;
+            vertical-align: middle;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #333;
+            display: inline-block;
+            margin: 0;
+        }
+
+        main {
+            margin: 10px auto;
+            max-width: 800px;
+        }
+
+        .video-container {
+            border: 5px solid #333;
+            display: inline-block;
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .info-box {
+            background-color: #333;
+            color: white;
+            padding: 8px 15px;  /* Reduced padding */
+            border-radius: 8px;  /* Slightly reduced border radius */
+            display: inline-block;
+            font-size: 1rem;  /* Reduced font size */
+            min-width: 150px;  /* Reduced minimum width */
+        }
+
+        .info-box p {
+            margin: 5px 0;  /* Reduced margin */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;  /* Reduced gap */
+        }
+
+        .info-box span:first-child {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/static/logo.jpg" alt="Logo" class="logo">
+        <h1>Color Detection</h1>
+    </header>
+
+    <main>
+        <div class="video-container">
+            <img src="/video_feed" alt="Color Detection Feed">
+        </div>
+        <div class="info-box">
+            <p>
+                <span>Warna:</span>
+                <span id="color">-</span>
+            </p>
+            <p>
+                <span>Hex:</span>
+                <span id="hex">-</span>
+            </p>
+        </div>
+    </main>
+
+    <script>
+        async function fetchColorInfo() {
+            try {
+                const response = await fetch('/color_info');
+                const data = await response.json();
+                
+                document.getElementById('color').innerText = data.color || "-";
+                document.getElementById('hex').innerText = data.hex || "-";
+                
+            } catch (error) {
+                console.error("Error fetching color info:", error);
+                document.getElementById('color').innerText = "Error";
+                document.getElementById('hex').innerText = "Error";
+            }
+        }
+
+        // Initial fetch
+        fetchColorInfo();
+        
+        // Start periodic updates
+        setInterval(fetchColorInfo, 100);
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    margin: 50px 0 30px 0; /* Margin atas lebih besar */
+    text-align: center;
+}
+
+.logo {
+    width: 100px; /* Ukuran logo tetap */
+    vertical-align: middle;
+    margin-bottom: 20px; /* Menambah jarak antara logo dan teks */
+}
+
+h1 {
+    font-size: 3rem; /* Ukuran lebih besar */
+    color: #333;
+    display: inline-block;
+    margin: 0;
+}
+
+main {
+    margin: 10px auto;
+    max-width: 800px;
+}
+
+.video-container {
+    border: 5px solid #333;
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 90%; /* Memperbesar lebar box */
+    max-width: 800px; /* Ukuran maksimum yang lebih besar */
+}
+
+img {
+    width: 100%; /* Pastikan gambar mengikuti lebar container */
+    height: auto;
+}
+
+.info-box {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: block; /* Pastikan tampil penuh di bawah video */
+    font-size: 1.2rem;
+    width: max-content; /* Ukuran mengikuti isi */
+    margin: 0 auto; /* Rata tengah */
+}
+
+.info-box p {
+    margin: 5px 0;
+}
+
+.info-box span:first-child {
+    font-weight: bold;
+}
